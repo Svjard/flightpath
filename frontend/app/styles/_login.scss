@@ -1,0 +1,11 @@
+.login-container {
+  max-width: 420px;
+  margin: auto;
+  padding-top: 6%;
+}
+
+@media (max-width: 420px) {
+  .login-container {
+    margin: auto 10px;
+  }
+}
