@@ -8,19 +8,9 @@
 	<title>Angular 2 Seed</title>
 
 	<!-- inject:js -->
-	<script src="/libs/node_modules/systemjs/dist/system-polyfills.js"></script>
-	<script src="/libs/node_modules/systemjs/dist/system.js"></script>
-	<script src="/libs/node_modules/es6-shim/es6-shim.js"></script>
-	<script src="/libs/node_modules/rxjs/bundles/Rx.js"></script>
-	<script src="/libs/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-	<script src="/libs/node_modules/angular2/bundles/angular2.dev.js"></script>
-	<script src="/libs/node_modules/angular2/bundles/router.dev.js"></script>
-	<script src="/libs/node_modules/angular2/bundles/http.dev.js"></script>
-	<script src="/libs/node_modules/lodash/index.js"></script>
 	<!-- endinject -->
 
 	<!-- inject:css -->
-	<link rel="stylesheet" href="/css/app.css">
 	<!-- endinject -->
 </head>
 <body>
@@ -38,6 +28,7 @@
 	</div>
 
 	<script>
+		<!-- @if isDev -->
 		/**
 		 * The package name `js` matches the folder structure inside `/build`.
 		 * And the `main` property points to the app entry file - `bootstrap.js`.
@@ -48,7 +39,20 @@
 
 		System.import('js')
 			.catch(console.error.bind(console));
+		<!-- @endif -->
 
+		<!-- @if isProd -->
+		/**
+		 * The bundle name `js/app.js` matches the file under the `/build` folder.
+		 * It also maps the entry dependecy module - `bootstrap`.
+		 */
+		System.config({
+			bundles: { 'js/app.js': ['bootstrap'] }
+		});
+
+		System.import('bootstrap')
+			.catch(console.error.bind(console));
+		<!-- @endif -->
 	</script>
 </body>
 </html>
