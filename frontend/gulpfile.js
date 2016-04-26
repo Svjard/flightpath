@@ -17,12 +17,12 @@ require('./tasks/gulp-watch'),
 require('./tasks/gulp-changelog');
 
 gulp.task('build', gulp.series(
-	'clean',
-	gulp.parallel('scss', 'typescript', 'images', 'fonts', 'libs'),
-	'index'
+  'clean',
+  gulp.parallel('scss', 'typescript', 'images', 'fonts', 'libs'),
+  'index'
 ));
 
 gulp.task('serve', gulp.parallel(
-	'watch',
-	'livereload'
+  'watch',
+  'livereload'
 ));

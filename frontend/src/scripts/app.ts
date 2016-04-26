@@ -26,15 +26,5 @@ import {AboutComponent} from './about/about.component';
   { path: '/about', name: 'About', component: AboutComponent }
 ])
 export class AppComponent {
-  /**
-   * This is a doc comment for `title`.
-   * @example This is a caption.
-   * ```ts
-   * var world: String = 'world';
-   * var hello: String = 'Hello ' + world;
-   * console.log(hello);
-   * ```
-   * @deprecated This is an example of the `deprecated` annotation tag.
-   */
-  public title = 'Angular 2 Seed';
+  public title = 'Bonvoyage';
 }
