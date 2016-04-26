@@ -10,7 +10,7 @@ gulp.task('scss', () => {
 	return gulp.src('src/scss/**/*.{scss,sass}')
 		.pipe(plugins.sassLint({ config: '.sass-lint.yml' }))
 		.pipe(plugins.sassLint.format())
-		.pipe(plugins.sassLint.failOnError())
+		//.pipe(plugins.sassLint.failOnError())
 		.pipe(plugins.if(env.isDev, plugins.sourcemaps.init()))
 		.pipe(plugins.sass())
 		.pipe(plugins.if(env.isDev, plugins.sourcemaps.write()))
