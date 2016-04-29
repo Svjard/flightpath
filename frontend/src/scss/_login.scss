@@ -5,7 +5,42 @@ body.blank {
 .login-container {
   max-width: 420px;
   margin:auto;
-  padding-top: 6%;
+  padding-top: 2%;
+
+  h3 {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    color: #ccc;
+  }
+
+  .copyright {
+    color: #000;
+  }
+}
+
+.btn-social.btn-google-plus {
+  background-color: #eb5e4c;
+  border-color: #eb5e4c;
+  color: #fff;
+
+  i {
+    float: left;
+    padding-right: 5px;
+    border-right: 1px solid white;
+    line-height: 24px;
+  }
+}
+
+.btn-social.btn-facebook {
+  color: #fff;
+  background-color: #5d82d1;
+  border-color: #5d82d1;
+
+  i {
+    float: left;
+    padding-right: 5px;
+    border-right: 1px solid white;
+    line-height: 24px;
+  }
 }
 
 .register-container {
