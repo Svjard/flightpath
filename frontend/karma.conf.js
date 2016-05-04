@@ -89,7 +89,6 @@ module.exports = function(config) {
       'Chrome'
     ],
 
-
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
