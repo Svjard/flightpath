@@ -11,15 +11,13 @@ import {AboutComponent} from './about.component';
 
 export function main() {
   describe('About component', () => {
-
-
     it('should work',
       inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         tcb.createAsync(TestComponent)
           .then((rootTC: any) => {
             let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            expect(DOM.querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+            expect(DOM.querySelectorAll(aboutDOMEl, 'h1')[0].textContent).toEqual('History');
           });
         }));
     });
@@ -28,6 +26,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   directives: [AboutComponent],
-  template: '<sd-about></sd-about>'
+  template: '<fp-about></fp-about>'
 })
 class TestComponent {}

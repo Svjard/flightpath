@@ -6,7 +6,7 @@ describe('About', () => {
   });
 
   it('should have correct feature heading', () => {
-    let el = element(by.css('sd-app sd-about h2'));
-    expect(el.getText()).toEqual('Features');
+    let el = element(by.css('fp-app fp-about h1'));
+    expect(el.getText()).toEqual('History');
   });
 });

@@ -1,14 +1,33 @@
-<p>
-  Howdy! Here's a list of awesome computer scientists.
-  Do you know any others? Add to the list yourself.
-</p>
-
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
-
-
-<ul>
-  <li *ngFor="let name of nameListService.get()">{{name}}</li>
-</ul>
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-lg-3">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-lime" data-click="panel-expand">
+            <i class="fa fa-expand"></i>
+          </a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse">
+            <i class="fa fa-minus"></i>
+          </a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+        <h4 class="panel-title">Depatures</h4>
+      </div>
+      <div class="panel-body">
+        <div class="panel-option">
+          <div class="dropdown pull-right">
+            <a href="javascript:;" class="btn btn-white btn-rounded btn-sm" data-toggle="dropdown">Change Date <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="javascript:;">Last Week</a></li>
+              <li><a href="javascript:;">Last Month</a></li>
+              <li><a href="javascript:;">Last Year</a></li>
+            </ul>
+          </div>
+          <div class="text-ellipsis">Date: 1 November 2015 - 30 November 2015</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
