@@ -1,6 +1,8 @@
-# **Bonvoyage**
+# **Flight Path**
 
-An open-source, free to play, MMO cruise line simulation, based on real-life data updated in real-time as well as realistic simulation models.
+<img src="http://i.imgur.com/OGlO7p1.png" width="250px">
+
+An open-source, free to play, MMO private airline simulation, based on real-life data updated in real-time as well as realistic simulation models.
 
 ## Overview
 
@@ -8,13 +10,14 @@ Coming Soon...
 
 ## Technology
 
-Bonvoyage uses the following technologies.
+Flight Path uses the following technologies.
 
-* [React](http://facebook.github.io/react/)
-* [Reflux](https://github.com/spoike/refluxjs)
-* [Immutable js](http://facebook.github.io/immutable-js/)
-* [React Router](https://github.com/rackt/react-router) v1.0.0-rc1
-* [Django](https://www.djangoproject.com/) and [Djnago REST Framework](http://www.django-rest-framework.org/)
+* [Angular 2](https://angular.io/)
+* [Redux](https://github.com/reactjs/redux)
+* [D3](https://d3js.org/)
+* [Bootstrap](http://getbootstrap.com/)
+* [Django](https://www.djangoproject.com/)
+* [Django REST Framework](http://www.django-rest-framework.org/)
 
 ## Getting Started
 
@@ -25,18 +28,20 @@ Preliminaries :
 
 You have to git clone this repository.
 ```
-git clone https://github.com/Svjard/bonvoyage
+git clone https://github.com/Svjard/flightpath
 ```
 
-### Installation for frontend WebApp
-In the ['frontend'](https://github.com/Svjard/bonvoyage/tree/master/frontend) directory **'./frontend/'**
+### Installation for Frontend WebApp
+
+In the ['frontend'](https://github.com/Svjard/flightpath/tree/master/frontend) directory **'./frontend/'**
 
 There are a few dependencies that this project relies on: Node.js (v.4.x) & Grunt
 
 - `npm install`
 
 ### Installation for REST API Server
-In the ['server' Root](https://github.com/Svjard/bonvoyage) directory **'./'**
+
+In the ['server' Root](https://github.com/Svjard/flightpath) directory **'./'**
 
 - `virtualenv venv`
 - `source venv/bin/activate`
@@ -45,34 +50,19 @@ In the ['server' Root](https://github.com/Svjard/bonvoyage) directory **'./'**
 - `python manage.py createsuperuser`
 
 ### Usage for frontend WebApp
-In the ['frontend'](https://github.com/Svjard/bonvoyage/tree/master/frontend) directory **'./frontend/'**
+
+In the ['frontend'](https://github.com/Svjard/flightpath/tree/master/frontend) directory **'./frontend/'**
 
 - `grunt serve` for previewing your site/app on a development server.
- (If you want live debugging, un-comment [django dev setting file](https://github.com/shalomeir/snippod-boilerplate/blob/master/snippod_boilerplate/settings/dev.py) 69 line
+ (If you want live debugging, un-comment [django dev setting file](https://github.com/Svjard/flightpath/blob/master/config/settings/dev.py) 69 line
  and install [LiveReload chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei).)
-- `grunt build` for build site/app for django 'collectstatic' command.
+- `grunt build` for build site/app for django 'static' command.
 
 ### Usage for REST API Server 
-In the ['snippod-server' Root](https://github.com/shalomeir/snippod-boilerplate) directory **'./'**
+
+In the ['server' Root](https://github.com/Svjard/flightpath) directory **'./'**
 
 - `python manage.py runserver`
-
-## Description
-
-### Front side
-Almost main javascript source are located [**'./snippod_webapp/client/scripts/'** directory](https://github.com/shalomeir/snippod-boilerplate/tree/master/snippod_webapp/client/scripts).
-Since, We'd like to apply node server for react server-side rendering, but didn't make yet.
-
-This front side ajax call usually doing in Actions. Reflux provide async auto generation for action. We use this and Promise.
-
-### Server side
-Django Rest framework provide browserble API. So you can see all get json by browserble API address too.
-- account list: ['~/api/v1/accounts/'](http://snippod-boilerplate-dev.elasticbeanstalk.com/api/v1/accounts/)
-- post list: ['~/api/v1/posts/'](http://snippod-boilerplate-dev.elasticbeanstalk.com/api/v1/posts/)
-- post list sorted by upvote count: ['~/api/v1/posts/?sorting=upvotes'](http://snippod-boilerplate-dev.elasticbeanstalk.com/api/v1/posts/?sorting=upvotes)
-- comment list: ['~/api/v1/comments/'](http://snippod-boilerplate-dev.elasticbeanstalk.com/api/v1/comments/)
-- single account, post or comment like this ['~/api/v1/posts/:postId/'](http://snippod-boilerplate-dev.elasticbeanstalk.com/api/v1/posts/10/)
-- user's posts or comments like this ['~/api/v1/user/:userId/posts/'](http://snippod-boilerplate-dev.elasticbeanstalk.com/api/v1/user/7/posts/)
 
 ## Contributing
 

@@ -35,9 +35,9 @@ MIDDLEWARE_CLASSES = (
   'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'bonvoyage.urls'
+ROOT_URLCONF = 'config.urls'
 
-WSGI_APPLICATION = 'bonvoyage.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -94,9 +94,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'authentication.Account'
-
-# Node server is important for React Server-side rendering.
-NODE_SERVER = 'http://0.0.0.0:3000/'
 
 #LOG
 LOGGING = {

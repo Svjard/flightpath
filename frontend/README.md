@@ -1,103 +1,65 @@
-# Angular 2 - Seed Project
+# Requirements
 
-[![Build Status](https://travis-ci.org/ghpabs/angular2-seed-project.svg?branch=master)](https://travis-ci.org/ghpabs/angular2-seed-project)
-[![Join the chat at https://gitter.im/ghpabs/angular2-seed-project](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ghpabs/angular2-seed-project)
+* Node.js v4.x.x or higher
+* npm 2.14.7.
 
-<img src="http://i.imgur.com/gM0tsOZ.png" width="250px">
+# Getting Started
 
-## Stack
-- [Gulp 4](http://gulpjs.com/)
-- [Angular 2](https://angular.io/)
-- [TypeScript](http://www.typescriptlang.org/)
-- [Typings](https://github.com/typings/typings)
-- [Sass](http://sass-lang.com/)
-- [Karma](http://karma-runner.github.io/)
-- [Protractor](http://www.protractortest.org/)
+```bash
+# install the project's dependencies
+npm install
+# watches your files and uses livereload by default
+npm start
+# api document for the app
+npm run build.docs
 
-## Workflow Features
-- **Gulp** fully automated workflow.
-- **Development** and **production** environment targets.
-- **Unit** and **E2E** test samples.
-- **Code coverage** report with TypeScript mapping.
-- **TypeScript** definition manager, linting, sourcemaps and transpilation (ES5).
-- **Sass** linting, sourcemaps and transpilation.
-- **TypeDoc** documentation generator.
-- **Change Log** generated based on Git metadata.
-
-## Angular 2 Features
-- Directives
-- Pipes
-- Services
-- Router
-- REST API
-- Template Cache
-- Modular Components
-- Dependency Injection
-- Custom Events
-
-## Global Dependencies
-
-| Dependency | Version | Install                               |
-| ---------- | ------- | ------------------------------------- |
-| NodeJS     | 5.x.x   | [http://node.org](http://nodejs.org/) |
-| npm        | 3.x.x   | [http://node.org](http://nodejs.org/) |
-| Gulp CLI   | 0.4.x   | `npm install gulpjs/gulp-cli#4.0 -g`  |
-| Typings    | 0.6.x   | `npm install typings -g`              |
-
-## Install
-```
-$ git clone https://github.com/ghpabs/angular2-seed-project.git && cd angular2-seed-project
-$ npm install
-$ typings install
-$ gulp build serve
+# dev build
+npm run build.dev
+# prod build
+npm run build.prod
 ```
 
-Note: the `serve` task won't automatically launch the browser for you.
-To view the app please open a new tab and go to `http://localhost:8080/`.
+# Configuration
 
-## Usage
-### Tasks
-- `$ gulp clean`: Remove generated folders - `build`, `docs` and `coverage`.
-- `$ gulp unit`: Run Karma against all `src/scripts/**/*.spec.js` files.
-- `$ gulp e2e`: Run Protractor against all `e2e/**/*.spec.js` files. The project must be being served before running end-to-end tests.
-- `$ gulp build`: Create distribution package.
-- `$ gulp serve`: Start web-server and live-reload.
-- `$ gulp docs`: Generate documentation.
-- `$ gulp changelog`: Generate `CHANGELOG.md` file from Git metadata. See [Change Log](#change-log) for more info.
+Default application server configuration
 
-### Environments
-Default: `NODE_ENV=development` and `PORT=8080`.
+```javascript
+var PORT             = 5555;
+var LIVE_RELOAD_PORT = 4002;
+var DOCS_PORT        = 4003;
+var APP_BASE         = '/';
+```
 
-#### Development:
-- `$ gulp build serve` is equivalent to
-`$ NODE_ENV=development PORT=8080 gulp build serve`.
+Configure at runtime
 
-#### Production
-- `$ NODE_ENV=production gulp build serve`.
+```bash
+npm start -- --port 8080 --reload-port 4000 --base /my-app/
+```
 
-## Ecosystem
-You might have noticed that we have quite a few files in our `root` folder. You might also be wondering why we need them and whether they are applicable to your use case. Here is a brief explanation:
+# Running tests
 
-- **.travis.yml**: Travis is our Continuos Integration (CI) server and this is its configuration file. We have added hooks to GitHub so automated tests will kick in after each commit.
-- **karma.shim.js**: Unit testing Angular2 apps is still in its early days and this file helps us setup the test runner - Karma.
+```bash
+npm test
 
-## Change Log
-This project generates the `CHANGELOG.md` from Git metadata using the [conventional-changelog](https://github.com/ajoslin/conventional-changelog) library. The commit message must follow the [Angular conventions][angular-commit-message-format] for this feature to work.
+# Debug - In two different shell windows
+npm run build.test.watch      # 1st window
+npm run karma.start           # 2nd window
 
-### Recommended Workflow
-- Make changes
-- Commit those changes
-- Make sure Travis turns green
-- Bump version in `package.json`
-- Run `gulp changelog`
-- Commit `package.json` and `CHANGELOG.md` files
-- Tag
-- Push
+# code coverage (istanbul)
+# auto-generated at the end of `npm test`
+# view coverage report:
+npm run serve.coverage
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. When submitting a PR, make sure that the commit messages match the [Angular conventions][angular-commit-message-format].
+# e2e (aka. end-to-end, integration) - In three different shell windows
+# Make sure you don't have a global instance of Protractor
 
-## License
-MIT
+# npm run webdriver-update <- You will need to run this the first time
+npm run webdriver-start
+npm run serve.e2e
+npm run e2e
 
-[angular-commit-message-format]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-format
+# e2e live mode - Protractor interactive mode
+# Instead of last command above, you can use:
+npm run e2e.live
+```
+You can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)

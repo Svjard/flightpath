@@ -1,4 +1,4 @@
-from bonvoyage.settings.common import *
+from config.settings.common import *
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -76,7 +76,7 @@ GZIP_CONTENT_TYPES = (
   'text/javascript'
 )
 
-AWS_STORAGE_BUCKET_NAME = 'bonvoyage'
+AWS_STORAGE_BUCKET_NAME = 'flightpath'
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_QUERYSTRING_AUTH = False

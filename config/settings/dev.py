@@ -1,4 +1,4 @@
-from bonvoyage.settings.common import *
+from config.settings.common import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$6(x*g_2g9l_*g8peb-@anl5^*8q!1w)k&e&2!i)t6$s8kia93'
@@ -37,7 +37,7 @@ TEMPLATES = [
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'NAME': './db.sqlite3',
   }
 }
 DATABASE_OPTIONS = {'charset': 'utf8'}
@@ -47,7 +47,7 @@ DATABASE_OPTIONS = {'charset': 'utf8'}
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'frontend/dist/client')
+  os.path.join(BASE_DIR, 'frontend/dist/client'),
 )
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)

@@ -1,0 +1,72 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
+    response = middleware_method(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/middleware.py", line 94, in process_response
+    new_response = panel.process_response(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 124, in process_response
+    'staticfiles_apps': self.get_staticfiles_apps(),
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 166, in get_staticfiles_apps
+    for finder in finders.get_finders():
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 264, in get_finders
+    yield get_finder(finder_path)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 277, in get_finder
+    return Finder()
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 57, in __init__
+    "Your STATICFILES_DIRS setting is not a tuple or list; "
+ImproperlyConfigured: Your STATICFILES_DIRS setting is not a tuple or list; perhaps you forgot a trailing comma?
+Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
+    response = middleware_method(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/middleware.py", line 94, in process_response
+    new_response = panel.process_response(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 124, in process_response
+    'staticfiles_apps': self.get_staticfiles_apps(),
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 166, in get_staticfiles_apps
+    for finder in finders.get_finders():
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 264, in get_finders
+    yield get_finder(finder_path)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
+    result = user_function(*args, **kwds)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 277, in get_finder
+    return Finder()
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 57, in __init__
+    "Your STATICFILES_DIRS setting is not a tuple or list; "
+ImproperlyConfigured: Your STATICFILES_DIRS setting is not a tuple or list; perhaps you forgot a trailing comma?
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
+    response = middleware_method(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/middleware.py", line 94, in process_response
+    new_response = panel.process_response(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 126, in process_response
+    'staticfiles_finders': self.get_staticfiles_finders(),
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 137, in get_staticfiles_finders
+    for path, finder_storage in finder.list([]):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 112, in list
+    for path in utils.get_files(storage, ignore_patterns):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/utils.py", line 28, in get_files
+    directories, files = storage.listdir(location)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/core/files/storage.py", line 300, in listdir
+    for entry in os.listdir(path):
+OSError: [Errno 2] No such file or directory: '/home2/flightpath/frontend/dist/client'
+Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
+    response = middleware_method(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/middleware.py", line 94, in process_response
+    new_response = panel.process_response(request, response)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 126, in process_response
+    'staticfiles_finders': self.get_staticfiles_finders(),
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/debug_toolbar/panels/staticfiles.py", line 137, in get_staticfiles_finders
+    for path, finder_storage in finder.list([]):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/finders.py", line 112, in list
+    for path in utils.get_files(storage, ignore_patterns):
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/contrib/staticfiles/utils.py", line 28, in get_files
+    directories, files = storage.listdir(location)
+  File "/home2/flightpath/venv/lib/python2.7/site-packages/django/core/files/storage.py", line 300, in listdir
+    for entry in os.listdir(path):
+OSError: [Errno 2] No such file or directory: '/home2/flightpath/frontend/dist/client'
