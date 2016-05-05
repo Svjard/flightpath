@@ -5,75 +5,108 @@ export default class LoginView extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.layers = [];
+    this.objects = [];
+    this.textures = [];
+    
+    this.d = 0;
+    this.p = 400;
     this.worldXAngle = 0;
     this.worldYAngle = 0;
-    this.d = 0;
+    this.computedWeights = [];
 
-    this.objects = [];
-    this.layers = [];
-  }
-
-  update() {
-    for( var j = 0; j < layers.length; j++ ) {
-        var layer = layers[ j ];
-        layer.data.a += layer.data.speed;
-        var t = 'translateX( ' + layer.data.x + 'px ) \
-            translateY( ' + layer.data.y + 'px ) \
-            translateZ( ' + layer.data.z + 'px ) \
-            rotateY( ' + ( - worldYAngle ) + 'deg ) \
-            rotateX( ' + ( - worldXAngle ) + 'deg ) \
-            scale( ' + layer.data.s + ')';
-        layer.style.transform = t;
-    }
-
-    requestAnimationFrame( update );
+    this.update = this.update.bind(this);
+    this.createCloud = this.createCloud.bind(this);
   }
 
   componentDidMount() {
-    this.world = document.getElementById( 'world' );
-    this.viewport = document.getElementById( 'viewport' );
+    this.world = document.getElementById('world');
+    this.viewport = document.getElementById('viewport');
 
-    if ( world.hasChildNodes() ) {
-      while ( world.childNodes.length >= 1 ) {
-        world.removeChild( world.firstChild );       
+    this.viewport.style.webkitPerspective = this.p;
+    this.viewport.style.MozPerspective = this.p + 'px';
+    this.viewport.style.oPerspective = this.p;
+    this.viewport.style.perspective = this.p;
+
+    this.objects = [];
+    if (this.world.hasChildNodes()) {
+      while (this.world.childNodes.length >= 1) {
+        this.world.removeChild(this.world.firstChild);       
       } 
     }
-
-    for( var j = 0; j <; 5; j++ ) {
-      objects.push( this.createCloud() );
+    
+    for (let j = 0; j < 5; j++) {
+      this.objects.push(this.createCloud());
     }
+
+    this.update();
+  }
+
+  update() {
+    for (let j = 0; j < this.layers.length; j++) {
+      let layer = this.layers[j];
+      layer.data.a += layer.data.speed;
+      let t = 'translateX( ' + layer.data.x + 'px ) translateY( ' + layer.data.y + 'px ) translateZ( ' + layer.data.z + 'px ) rotateY( ' + ( -this.worldYAngle ) + 'deg ) rotateX( ' + ( -this.worldXAngle ) + 'deg ) rotateZ( ' + layer.data.a + 'deg ) scale( ' + layer.data.s + ')';
+      layer.style.webkitTransform =
+        layer.style.MozTransform =
+        layer.style.oTransform =
+        layer.style.transform = t;
+    }
+    
+    requestAnimationFrame(this.update);
   }
 
   createCloud() {
-    let div = document.createElement( 'div'  );
+    let div = document.createElement('div');
     div.className = 'cloudBase';
-    
-    var t = 'translateX( ' + random_x + 'px ) \
-        translateY( ' + random_y + 'px ) \
-        translateZ( ' + random_z + 'px )';
+
+    const x = 256 - (Math.random() * 512);
+    const y = 256 - (Math.random() * 512);
+    const z = 256 - (Math.random() * 512);
+    const t = 'translateX( ' + x + 'px ) translateY( ' + y + 'px ) translateZ( ' + z + 'px )';
+    div.style.webkitTransform = 
+    div.style.MozTransform = 
+    div.style.oTransform =
     div.style.transform = t;
-    world.appendChild( div );
+    this.world.appendChild( div );
     
-    for( var j = 0; j < 5 + Math.round( Math.random() * 10 ); j++ ) {
-        var cloud = document.createElement( 'div' );
-        cloud.className = 'cloudLayer';
-        
-        cloud.data = { 
-            x: random_x,
-            y: random_y,
-            z: random_z,
-            a: random_a,
-            s: random_s
-        };
-        var t = 'translateX( ' + random_x + 'px ) \
-            translateY( ' + random_y + 'px ) \
-            translateZ( ' + random_z + 'px ) \
-            rotateZ( ' + random_a + 'deg ) \
-            scale( ' + random_s + ' )';
+    for (let j = 0; j < 5 + Math.round(Math.random() * 10); j++) {
+      let cloud = document.createElement('img');
+      cloud.style.opacity = 0;
+
+      const src = 'images/cloud.png';
+      ((img) => {
+        img.addEventListener('load', () => {
+          img.style.opacity = .8;
+        })
+      })(cloud);
+
+      cloud.setAttribute( 'src', src );
+      cloud.className = 'cloudLayer';
+      
+      let x = 256 - (Math.random() * 512);
+      let y = 256 - (Math.random() * 512);
+      let z = 100 - (Math.random() * 200);
+      let a = Math.random() * 360;
+      let s = .25 + Math.random();
+      x *= .2; y *= .2;
+      cloud.data = { 
+        x: x,
+        y: y,
+        z: z,
+        a: a,
+        s: s,
+        speed: .1 * Math.random()
+      };
+      
+      let t = 'translateX( ' + x + 'px ) translateY( ' + y + 'px ) translateZ( ' + z + 'px ) rotateZ( ' + a + 'deg ) scale( ' + s + ' )';
+      cloud.style.webkitTransform = 
+        cloud.style.MozTransform = 
+        cloud.style.oTransform = 
         cloud.style.transform = t;
-        
-        div.appendChild( cloud );
-        layers.push( cloud );
+    
+      div.appendChild(cloud);
+      this.layers.push(cloud);
     }
     
     return div;
@@ -82,8 +115,8 @@ export default class LoginView extends React.Component {
   render() {
     return (
       <div id="page-container" className="page-container">
-        <div id="viewport" style={{bottom: 0, left: 0, overflow: 'hidden', perspective: 400, position: 'absolute', right: 0, top: 0}}>
-          <div id="world" style={{height: '512px', left: '50%', margin-left: '-256px', margin-top: '-256px', position: 'absolute', top: '50%', transform-style: 'preserve-3d', width: '512px'}}></div>
+        <div id="viewport">
+          <div id="world"></div>
           <div className="login">
             <div className="login-brand bg-inverse text-white">
               <img src="images/logo_inverse.png" height="36" className="pull-right" /> Flight Path Login

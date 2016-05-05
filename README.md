@@ -6,6 +6,8 @@ An open-source, free to play, MMO private airline simulation, based on real-life
 
 More details and website coming soon...
 
+<img src="http://i.imgur.com/BuF39i9.png">
+
 ## Technology
 
 Flight Path uses the following technologies.
