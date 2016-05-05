@@ -1,14 +1,14 @@
 # **Flight Path**
 
-[![Build Status](https://travis-ci.org/Svjard/flightpath.svg?branch=master)]
+[![Build Status](https://travis-ci.org/Svjard/flightpath.svg?branch=master)](https://travis-ci.org/Svjard/flightpath)
 
 <img src="http://i.imgur.com/OGlO7p1.png" width="250px">
 
-An open-source, free to play, MMO private airline simulation, based on real-life data updated in real-time as well as realistic simulation models.
-
 ## Overview
 
-Coming Soon...
+An open-source, free to play, MMO private airline simulation, based on real-life data updated in real-time as well as realistic simulation models.
+
+More details and website coming soon...
 
 ## Technology
 
