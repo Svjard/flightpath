@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import AboutPage from './AboutPage';
+import AboutView from './AboutView';
 import { Link } from 'react-router';
 
-describe('<AboutPage />', () => {
+describe('<AboutView />', () => {
 	it('should have 4 paragraphs', () => {
-    const wrapper = shallow(<AboutPage />);
+    const wrapper = shallow(<AboutView />);
     const actual = wrapper.find('p').length;
     const expected = 4;
     
@@ -15,7 +15,7 @@ describe('<AboutPage />', () => {
 	});
 
   it('should have a header called History', () => {
-    const wrapper = shallow(<AboutPage />);
+    const wrapper = shallow(<AboutView />);
     const actual = wrapper.find('h1').text();
     const expected = 'History';
     

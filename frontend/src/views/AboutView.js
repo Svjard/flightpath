@@ -1,21 +1,21 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
 import '../styles/about-page.css';
 
-const AboutPage = () => {
+export default class AboutView extends React.Component {
+  render() {
     return (
       <div>
         <p>
-        Flight Path is an open-source, free-to-play, online regional airline simulation. It allows users to experience
-        the dynamics of owning and operating a regional airline such as dealing with aircraft purchases and maintence,
-        nation-wide weather, corporate taxes, and various economic factors.
+          Flight Path is an open-source, free-to-play, online regional airline simulation. It allows users to experience
+          the dynamics of owning and operating a regional airline such as dealing with aircraft purchases and maintence,
+          nation-wide weather, corporate taxes, and various economic factors.
         </p>
         <p>Author: <strong>Marc Fisher</strong></p>
         <p>
-        Released under the MIT license.
+          Released under the MIT license.
         </p>
         <p>
-        Code is available at <a href="https://github.com/Svjard/flightpath">Github</a>
+          Code is available at <a href="https://github.com/Svjard/flightpath">Github</a>
         </p>
         <div className="release-history">
           <h1 className="history">History</h1>
@@ -32,6 +32,5 @@ const AboutPage = () => {
         </div>
       </div>
     );
-};
-
-export default AboutPage;
+  }
+}

@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
-import fuelSavingsAppState from './fuelSavings';
+import {combineReducers} from 'redux';
+import {routerStateReducer} from 'redux-router';
+import auth from './auth';
+import data from './data';
 
-const rootReducer = combineReducers({
-  fuelSavingsAppState
+export default combineReducers({
+  auth,
+  data,
+  router: routerStateReducer
 });
-
-export default rootReducer;

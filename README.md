@@ -10,7 +10,7 @@ More details and website coming soon...
 
 Flight Path uses the following technologies.
 
-* [Angular 2](https://angular.io/)
+* [React](https://facebook.github.io/react/)
 * [Redux](https://github.com/reactjs/redux)
 * [D3](https://d3js.org/)
 * [Bootstrap](http://getbootstrap.com/)
@@ -22,7 +22,7 @@ Flight Path uses the following technologies.
 Preliminaries :
 * Python 3.4
 * virtualenv (optional)
-* npm
+* Node.js & npm
 
 You have to git clone this repository.
 ```
@@ -33,7 +33,7 @@ git clone https://github.com/Svjard/flightpath
 
 In the ['frontend'](https://github.com/Svjard/flightpath/tree/master/frontend) directory **'./frontend/'**
 
-There are a few dependencies that this project relies on: Node.js (v.4.x) & Grunt
+There are a few dependencies that this project relies on: Node.js (v.4.x)
 
 - `npm install`
 
@@ -51,10 +51,7 @@ In the ['server' Root](https://github.com/Svjard/flightpath) directory **'./'**
 
 In the ['frontend'](https://github.com/Svjard/flightpath/tree/master/frontend) directory **'./frontend/'**
 
-- `grunt serve` for previewing your site/app on a development server.
- (If you want live debugging, un-comment [django dev setting file](https://github.com/Svjard/flightpath/blob/master/config/settings/dev.py) 69 line
- and install [LiveReload chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei).)
-- `grunt build` for build site/app for django 'static' command.
+- `npm start -s`
 
 ### Usage for REST API Server 
 

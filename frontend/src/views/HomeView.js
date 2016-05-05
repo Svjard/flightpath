@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-export class HomePage extends Component {
+export default class HomeView extends Component {
   render() {
     return (
       <div id="content" className="content">
@@ -71,5 +71,3 @@ export class HomePage extends Component {
     );
   }
 }
-
-export default HomePage;

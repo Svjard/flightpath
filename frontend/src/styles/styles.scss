@@ -593,7 +593,7 @@ body {
     line-height: 26px;
 }
 .navbar-brand .logo {
-    width: 30px;
+    width: 34px;
     margin-top: -1px;
     float: left;
     margin-right: 10px;
@@ -5437,7 +5437,7 @@ a.list-group-item-danger:hover {
     position: relative;
 }
 .nav.nav-tabs > li > a {
-    padding: 15px 20px;
+    padding: 12px 20px;
     margin: 0;
 }
 .nav.nav-tabs > li:after {
@@ -10502,4 +10502,45 @@ body.font-helvetica-arial .navbar-brand {
 body.font-helvetica-arial .mail-box-user-list > li a {
     font-weight: 300;
     font-size: 13px;
+}
+
+#viewport {
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    perspective: 400; 
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#world {
+    height: 512px;
+    left: 50%;
+    margin-left: -256px;
+    margin-top: -256px;
+    position: absolute;
+    top: 50%;
+    transform-style: preserve-3d;
+    width: 512px;
+}
+
+.cloudBase {
+    height: 20px;
+    left: 256px;
+    margin-left: -10px;
+    margin-top: -10px;
+    position: absolute;
+    top: 256px;
+    width: 20px;
+}
+
+.cloudLayer {
+    height: 256px;
+    left: 50%;
+    margin-left: -128px;
+    margin-top: -128px;
+    position: absolute;
+    top: 50%;
+    width: 256px;
 }
