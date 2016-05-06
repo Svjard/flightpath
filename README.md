@@ -2,7 +2,7 @@
 
 ## Overview
 
-An open-source, free to play, MMO private airline simulation, based on real-life data updated in real-time as well as realistic simulation models.
+An open-source, free to play, MMO regional airline simulation, based on real-life data updated in real-time as well as realistic simulation models.
 
 More details and website coming soon...
 

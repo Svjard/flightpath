@@ -31,6 +31,7 @@
     "semi": [1, "always"],
     "no-trailing-spaces": 0,
     "eol-last": 0,
+    "import/named": 0,
     "no-unused-vars": 0,
     "no-underscore-dangle": 0,
     "no-alert": 0,

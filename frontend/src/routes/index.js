@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from '../containers/App';
-import { HomeView, LoginView, CompanyView, FleetView, MapView, AboutView, NotFoundView, ProtectedView } from '../views';
+import { HomeView, LoginView, CompanyView, FleetView, MapView, AboutView } from '../views';
 import { requireAuthentication } from '../components/AuthenticatedComponent';
 
 export default (
@@ -12,6 +12,5 @@ export default (
     <Route path="fleet" component={requireAuthentication(FleetView)}/>
     <Route path="map" component={requireAuthentication(MapView)}/>
     <Route path="about" component={AboutView}/>
-    <Route path="*" component={NotFoundView} />
   </Route>
 );

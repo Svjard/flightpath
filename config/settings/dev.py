@@ -47,7 +47,8 @@ DATABASE_OPTIONS = {'charset': 'utf8'}
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'frontend/dist/client'),
+  os.path.join(BASE_DIR, 'frontend/dist/'),
+  os.path.join(BASE_DIR, 'frontend/src/'),
 )
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)

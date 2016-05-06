@@ -1,2 +1,7 @@
-export App from './App';
-export Root from './Root';
+import App from './App';
+import Root from './Root';
+
+export {
+  App,
+  Root
+};

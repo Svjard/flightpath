@@ -48,7 +48,7 @@ export function logoutAndRedirect() {
   return (dispatch, state) => {
     dispatch(logout());
     dispatch(pushState(null, '/login'));
-  }
+  };
 }
 
 export function loginUser(email, password, redirect="/") {
@@ -97,7 +97,7 @@ export function receiveProtectedData(data) {
 export function fetchProtectedDataRequest() {
   return {
     type: FETCH_PROTECTED_DATA_REQUEST
-  }
+  };
 }
 
 export function fetchProtectedData(token) {

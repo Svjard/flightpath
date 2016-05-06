@@ -47,3 +47,5 @@ venv/*
 
 gulpfile.js
 gulpfile.js.map
+
+*.pyc

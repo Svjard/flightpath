@@ -74,11 +74,11 @@ export default class LoginView extends React.Component {
       let cloud = document.createElement('img');
       cloud.style.opacity = 0;
 
-      const src = 'images/cloud.png';
+      const src = '/static/images/cloud.png';
       ((img) => {
         img.addEventListener('load', () => {
           img.style.opacity = .8;
-        })
+        });
       })(cloud);
 
       cloud.setAttribute( 'src', src );
@@ -119,7 +119,7 @@ export default class LoginView extends React.Component {
           <div id="world"></div>
           <div className="login">
             <div className="login-brand bg-inverse text-white">
-              <img src="images/logo_inverse.png" height="36" className="pull-right" /> Flight Path Login
+              <img src="/static/images/logo_inverse.png" height="36" className="pull-right" /> Flight Path Login
             </div>
             <div className="login-content">
               <div className="text-center m-t-0 m-b-20">Please sign in to your account below.</div>

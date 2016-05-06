@@ -57,9 +57,9 @@ USE_TZ = True
 STATIC_ROOT = 'static'
 
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+  'django.contrib.staticfiles.finders.FileSystemFinder',
+  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+  'compressor.finders.CompressorFinder',
 )
 
 #MEDIA FILE (user uploaded files)
@@ -72,7 +72,9 @@ REST_FRAMEWORK = {
     'rest_framework.permissions.IsAuthenticatedOrReadOnly',
   ),
   'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework.authentication.SessionAuthentication',
+      'rest_framework.authentication.SessionAuthentication',
+      'rest_framework.authentication.BasicAuthentication',
+      'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
   ),
   'DEFAULT_RENDERER_CLASSES': (
     'utils.api.renderers.CamelCaseJSONRenderer',

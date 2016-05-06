@@ -1,46 +1,23 @@
 {% load staticfiles argonauts %}
 
 <!DOCTYPE html>
-<!--[if lte IE 8]><html class="lt-ie9  no-js" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html lang="en" class="no-js"><!--<![endif]-->
-
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>snippod-boilerplate</title>
-  <meta name="description" content=""/>
-  <meta name="author" content=""/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Flight Path</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
   {% include 'stylesheets.html' %}
 
-  <script src="{% static "scripts/modernizr.js" %}"></script>
-
-  <!-- HTML5 and consolelog shims for IE8 support -->
-  <!--[if lt IE 9]><script src="{% static "scripts/lt-ie9.js" %}"></script><![endif]-->
-
+  <link rel="shortcut icon" href="favicon.ico">
 </head>
 
 <body>
-  <!--[if lte IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser.
-    Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+  <div id="root"></div>
 
-  <!-- Application loads here -->
-  <div id="app-wrapper" ></div>
-
-  <!--[if lt IE 9]>
-    <script src="{% static "scripts/lt-ie9.js" %}"></script>
-  <![endif]-->
-
-
-  {#  main javascript application usgin react + reflux#}
-  <script src="{% static "scripts/main.js" %}"></script>
-
-  {% include 'nodeserverrendering.html' %}
-
+  <script src="{% static "bundle.js" %}"></script>
 </body>
 </html>
-
