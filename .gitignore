@@ -49,3 +49,7 @@ gulpfile.js
 gulpfile.js.map
 
 *.pyc
+
+*.sqlite3
+
+logs/*

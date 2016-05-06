@@ -54,14 +54,19 @@ export function logoutAndRedirect() {
 export function loginUser(email, password, redirect="/") {
   return function(dispatch) {
     dispatch(loginUserRequest());
-    return fetch('http://localhost:3000/auth/getToken/', {
+    
+    let fd = new FormData();
+    fd.append('email', email);
+    fd.append('password', password);
+    
+    return fetch('http://localhost:8000/api/v1/auth/login/', {
         method: 'post',
         credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email: email, password: password})
+        body: fd
       })
       .then(checkHttpStatus)
       .then(parseJSON)

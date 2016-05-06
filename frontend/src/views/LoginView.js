@@ -17,6 +17,9 @@ export default class LoginView extends React.Component {
 
     this.update = this.update.bind(this);
     this.createCloud = this.createCloud.bind(this);
+
+    // event handlers
+    this.submitLogin = this.submitLogin.bind(this);
   }
 
   componentDidMount() {
@@ -112,6 +115,13 @@ export default class LoginView extends React.Component {
     return div;
   }
 
+  submitLogin(evt) {
+    evt.preventDefault();
+
+    this.dispatch(loginUser(this.refs.username, this.refs.password));
+    this.setState({ isProcessingLogin: true });
+  }
+
   render() {
     return (
       <div id="page-container" className="page-container">
@@ -123,12 +133,13 @@ export default class LoginView extends React.Component {
             </div>
             <div className="login-content">
               <div className="text-center m-t-0 m-b-20">Please sign in to your account below.</div>
-              <form action="index.html" method="POST" name="login_form" className="form-input-flat">
+              { this.props.isProcessingLogin ?  : <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
+              <form onSubmit={this.submitLogin} method="POST" name="login_form" className="form-input-flat">
                 <div className="form-group">
-                  <input type="text" className="form-control input-lg" placeholder="Email Address" />
+                  <input ref="username" type="text" className="form-control input-lg" placeholder="Username" />
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control input-lg" placeholder="Password" />
+                  <input ref="password" type="password" className="form-control input-lg" placeholder="Password" />
                 </div>
                 <div className="row m-b-20">
                   <div className="col-md-12">
@@ -139,6 +150,7 @@ export default class LoginView extends React.Component {
                   New here? <a href="/register" className="text-muted">Create a new account</a>
                 </div>
               </form>
+              }
             </div>
           </div>
         </div>
@@ -146,3 +158,7 @@ export default class LoginView extends React.Component {
     );
   }
 }
+
+LoginView.defaultProps = {
+  isProcessingLogin: false
+};
