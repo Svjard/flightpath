@@ -1,13 +1,27 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import reactMixin from 'react-mixin';
+import * as actionCreators from '../actions';
+import LinkedStateMixin from 'react-addons-linked-state-mixin';
 
-export default class LoginView extends React.Component {
+class LoginView extends React.Component {
   constructor(props, context) {
     super(props, context);
+
+    const redirectRoute = this.props.location.query.next || '/login';
+    this.state = {
+      email: '',
+      password: '',
+      redirectTo: redirectRoute
+    };
 
     this.layers = [];
     this.objects = [];
     this.textures = [];
+
+    this.ext = '';
     
     this.d = 0;
     this.p = 400;
@@ -23,6 +37,12 @@ export default class LoginView extends React.Component {
   }
 
   componentDidMount() {
+    let ext = document.location.port !== '3000' ? '/static' : '';
+    if (this.ext !== ext) {
+      this.ext = ext;
+      this.setState(this.state);
+    }
+
     this.world = document.getElementById('world');
     this.viewport = document.getElementById('viewport');
 
@@ -77,7 +97,7 @@ export default class LoginView extends React.Component {
       let cloud = document.createElement('img');
       cloud.style.opacity = 0;
 
-      const src = '/static/images/cloud.png';
+      const src = this.ext + '/images/cloud.png';
       ((img) => {
         img.addEventListener('load', () => {
           img.style.opacity = .8;
@@ -118,8 +138,8 @@ export default class LoginView extends React.Component {
   submitLogin(evt) {
     evt.preventDefault();
 
-    this.dispatch(loginUser(this.refs.username, this.refs.password));
-    this.setState({ isProcessingLogin: true });
+    debugger;
+    this.props.actions.loginUser(this.state.email, this.state.password, this.state.redirectTo);
   }
 
   render() {
@@ -129,12 +149,12 @@ export default class LoginView extends React.Component {
           <div id="world"></div>
           <div className="login">
             <div className="login-brand bg-inverse text-white">
-              <img src="/static/images/logo_inverse.png" height="36" className="pull-right" /> Flight Path Login
+              <img src={this.ext + '/images/logo_inverse.png'} height="36" className="pull-right" /> Flight Path Login
             </div>
             <div className="login-content">
               <div className="text-center m-t-0 m-b-20">Please sign in to your account below.</div>
-              { this.props.isProcessingLogin ?  : <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
-              <form onSubmit={this.submitLogin} method="POST" name="login_form" className="form-input-flat">
+              { this.props.isAuthenticating ?  <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i> :
+              <form role="form" name="login_form" className="form-input-flat">
                 <div className="form-group">
                   <input ref="username" type="text" className="form-control input-lg" placeholder="Username" />
                 </div>
@@ -143,7 +163,7 @@ export default class LoginView extends React.Component {
                 </div>
                 <div className="row m-b-20">
                   <div className="col-md-12">
-                    <button type="submit" className="btn btn-lime btn-lg btn-block">Sign in to your account</button>
+                    <button type="submit" onClick={this.submitLogin} className="btn btn-lime btn-lg btn-block">Sign in to your account</button>
                   </div>
                 </div>
                 <div className="text-center">
@@ -159,6 +179,15 @@ export default class LoginView extends React.Component {
   }
 }
 
-LoginView.defaultProps = {
-  isProcessingLogin: false
-};
+reactMixin(LoginView.prototype, LinkedStateMixin);
+
+const mapStateToProps = (state) => ({
+  isAuthenticating   : state.auth.isAuthenticating,
+  statusText         : state.auth.statusText
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions : bindActionCreators(actionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

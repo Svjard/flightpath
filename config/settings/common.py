@@ -19,6 +19,7 @@ INSTALLED_APPS = (
   'django.contrib.staticfiles',
   'compressor',
   'rest_framework',
+  'corsheaders',
   'argonauts',
   'main',
   'authentication',
@@ -27,6 +28,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
   'django.contrib.sessions.middleware.SessionMiddleware',
+  'corsheaders.middleware.CorsMiddleware',
   'django.middleware.common.CommonMiddleware',
   'django.middleware.csrf.CsrfViewMiddleware',
   'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -34,6 +36,10 @@ MIDDLEWARE_CLASSES = (
   'django.contrib.messages.middleware.MessageMiddleware',
   'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'config.urls'
 
@@ -104,7 +110,7 @@ LOGGING = {
     'file': {
       'level': 'DEBUG',
       'class': 'logging.FileHandler',
-      'filename': './logs/debug.log',
+      'filename': './debug.log',
     }
   },
   'loggers': {

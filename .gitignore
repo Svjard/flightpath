@@ -2,6 +2,10 @@
 logs
 *.log
 
+*.pyc
+
+*.sqlite3
+
 # Runtime data
 pids
 *.pid
@@ -47,9 +51,3 @@ venv/*
 
 gulpfile.js
 gulpfile.js.map
-
-*.pyc
-
-*.sqlite3
-
-logs/*

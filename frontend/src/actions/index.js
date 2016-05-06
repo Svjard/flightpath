@@ -26,7 +26,8 @@ export function loginUserFailure(error) {
     type: LOGIN_USER_FAILURE,
     payload: {
       status: error.response.status,
-      statusText: error.response.statusText
+      statusText: error.response.statusText,
+      message: error.response.message
     }
   };
 }
@@ -52,8 +53,12 @@ export function logoutAndRedirect() {
 }
 
 export function loginUser(email, password, redirect="/") {
+  console.log('loginUser', email, password);
+
   return function(dispatch) {
     dispatch(loginUserRequest());
+
+    console.log('loginUser 2');
     
     let fd = new FormData();
     fd.append('email', email);
@@ -61,16 +66,15 @@ export function loginUser(email, password, redirect="/") {
     
     return fetch('http://localhost:8000/api/v1/auth/login/', {
         method: 'post',
-        credentials: 'include',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Accept': 'application/json'
         },
         body: fd
       })
       .then(checkHttpStatus)
       .then(parseJSON)
       .then(response => {
+        console.log('loginUser 5', response);
         try {
           let decoded = jwtDecode(response.token);
           dispatch(loginUserSuccess(response.token));
@@ -85,6 +89,7 @@ export function loginUser(email, password, redirect="/") {
         }
       })
       .catch(error => {
+        console.log('DONE', error);
         dispatch(loginUserFailure(error));
       });
   };

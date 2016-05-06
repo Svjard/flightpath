@@ -23,6 +23,7 @@ export function checkHttpStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else {
+    console.log('checkHttpStatus', response, response.body);
     let error = new Error(response.statusText);
     error.response = response;
     throw error;
