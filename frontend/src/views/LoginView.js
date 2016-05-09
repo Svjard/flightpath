@@ -139,7 +139,7 @@ class LoginView extends React.Component {
     evt.preventDefault();
 
     debugger;
-    this.props.actions.loginUser(this.state.email, this.state.password, this.state.redirectTo);
+    this.props.actions.loginUser(this.refs.email.value, this.refs.password.value, this.state.redirectTo);
   }
 
   render() {
@@ -156,7 +156,7 @@ class LoginView extends React.Component {
               { this.props.isAuthenticating ?  <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i> :
               <form role="form" name="login_form" className="form-input-flat">
                 <div className="form-group">
-                  <input ref="username" type="text" className="form-control input-lg" placeholder="Username" />
+                  <input ref="email" type="text" className="form-control input-lg" placeholder="Email" />
                 </div>
                 <div className="form-group">
                   <input ref="password" type="password" className="form-control input-lg" placeholder="Password" />

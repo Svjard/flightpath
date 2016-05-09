@@ -1,4 +1,4 @@
-import { checkHttpStatus, parseJSON } from '../utils';
+import { checkHttpStatus } from '../utils';
 import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_FAILURE,
@@ -8,20 +8,23 @@ import {
   RECEIVE_PROTECTED_DATA
 } from '../constants';
 import { pushState } from 'redux-router';
-import jwtDecode from 'jwt-decode';
+import Promise from 'bluebird';
+import superAgent from 'superagent';
+import superAgentPromise from 'superagent-promise';
 
-export function loginUserSuccess(token) {
-  localStorage.setItem('token', token);
+const agent = superAgentPromise(superAgent, Promise);
+
+export function loginUserSuccess(account) {
+  console.log('loginUserSuccess', account, LOGIN_USER_SUCCESS);
   return {
     type: LOGIN_USER_SUCCESS,
     payload: {
-      token: token
+      account: account
     }
   };
 }
 
 export function loginUserFailure(error) {
-  localStorage.removeItem('token');
   return {
     type: LOGIN_USER_FAILURE,
     payload: {
@@ -57,39 +60,22 @@ export function loginUser(email, password, redirect="/") {
 
   return function(dispatch) {
     dispatch(loginUserRequest());
-
-    console.log('loginUser 2');
     
-    let fd = new FormData();
-    fd.append('email', email);
-    fd.append('password', password);
+    let formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
     
-    return fetch('http://localhost:8000/api/v1/auth/login/', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: fd
-      })
+    return agent.
+      post('http://127.0.0.1:8000/api/v1/auth/login/')
+      .send(formData)
+      .end()
       .then(checkHttpStatus)
-      .then(parseJSON)
       .then(response => {
-        console.log('loginUser 5', response);
-        try {
-          let decoded = jwtDecode(response.token);
-          dispatch(loginUserSuccess(response.token));
-          dispatch(pushState(null, redirect));
-        } catch (e) {
-          dispatch(loginUserFailure({
-            response: {
-              status: 403,
-              statusText: 'Invalid token'
-            }
-          }));
-        }
+        console.log('call LOGIN_USER_SUCCESS', response.body.account);
+        dispatch(loginUserSuccess(response.body.account));
+        dispatch(pushState(null, redirect));
       })
       .catch(error => {
-        console.log('DONE', error);
         dispatch(loginUserFailure(error));
       });
   };
@@ -120,7 +106,6 @@ export function fetchProtectedData(token) {
         }
       })
       .then(checkHttpStatus)
-      .then(parseJSON)
       .then(response => {
         dispatch(receiveProtectedData(response.data));
       })

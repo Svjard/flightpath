@@ -6,11 +6,9 @@ import {
   LOGOUT_USER
 } from '../constants';
 import { pushState } from 'redux-router';
-import jwtDecode from 'jwt-decode';
 
 const initialState = {
-  token: null,
-  userName: null,
+  account: null,
   isAuthenticated: false,
   isAuthenticating: false,
   statusText: null
@@ -24,11 +22,11 @@ export default createReducer(initialState, {
     });
   },
   [LOGIN_USER_SUCCESS]: (state, payload) => {
+    console.log('LOGIN_USER_SUCCESS');
     return Object.assign({}, state, {
       'isAuthenticating': false,
       'isAuthenticated': true,
-      'token': payload.token,
-      'userName': jwtDecode(payload.token).userName,
+      'account': payload.account,
       'statusText': 'You have been successfully logged in.'
     });
   },
@@ -36,16 +34,14 @@ export default createReducer(initialState, {
     return Object.assign({}, state, {
       'isAuthenticating': false,
       'isAuthenticated': false,
-      'token': null,
-      'userName': null,
+      'account': null,
       'statusText': `Authentication Error: ${payload.status} ${payload.statusText}`
     });
   },
   [LOGOUT_USER]: (state, payload) => {
     return Object.assign({}, state, {
       'isAuthenticated': false,
-      'token': null,
-      'userName': null,
+      'account': null,
       'statusText': 'You have been successfully logged out.'
     });
   }

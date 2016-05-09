@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 export function createConstants(...constants) {
-  return constants.reduce((acc, constant) => {
+  console.log('createConstants', constants);
+
+  let a = constants.reduce((acc, constant) => {
     acc[constant] = constant;
     return acc;
   }, {});
+
+  console.log('a', a);
+
+  return a;
 }
 
 export function createReducer(initialState, reducerMap) {
@@ -28,8 +34,4 @@ export function checkHttpStatus(response) {
     error.response = response;
     throw error;
   }
-}
-
-export function parseJSON(response) {
-  return response.json();
 }

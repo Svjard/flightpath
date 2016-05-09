@@ -22,7 +22,6 @@
     "cookies-js": "^1.2.2",
     "d3": "^3.5.13",
     "flux": "^2.0.3",
-    "isomorphic-fetch": "^2.2.0",
     "jwt-decode": "^1.1.0",
     "keymirror": "^0.1.1",
     "lodash": "^4.0.0",
@@ -41,7 +40,9 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-router": "^1.0.0-beta6",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "superagent": "^1.8.2",
+    "superagent-promise": "^1.1.0"
   },
   "devDependencies": {
     "babel-cli": "6.7.7",
