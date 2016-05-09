@@ -6,14 +6,23 @@ import reactMixin from 'react-mixin';
 import * as actionCreators from '../actions';
 import LinkedStateMixin from 'react-addons-linked-state-mixin';
 
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 class LoginView extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     const redirectRoute = this.props.location.query.next || '/login';
-    this.state = {
-      email: '',
-      password: '',
+     this.state = {
+      submitted: false,
+      credentials: {
+        email: '',
+        password: ''
+      },
+      errors: {
+        email: 'This field is required.',
+        password: 'This field is required.'
+      },
       redirectTo: redirectRoute
     };
 
@@ -33,7 +42,8 @@ class LoginView extends React.Component {
     this.createCloud = this.createCloud.bind(this);
 
     // event handlers
-    this.submitLogin = this.submitLogin.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +51,15 @@ class LoginView extends React.Component {
     if (this.ext !== ext) {
       this.ext = ext;
       this.setState(this.state);
+    }
+
+    var keys = Object.keys(this.state.credentials);
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      if (this.state.credentials[key].length < 1) {
+        this.refs[key + 'Input'].focus();
+        break;
+      }
     }
 
     this.world = document.getElementById('world');
@@ -135,11 +154,41 @@ class LoginView extends React.Component {
     return div;
   }
 
-  submitLogin(evt) {
-    evt.preventDefault();
+  handleChange(event) {
+    var stateChange = this.state;
+    var key = event.target.name;
+    stateChange.credentials[key] = event.target.value;
+    
+    if (!stateChange.credentials[key].length) {
+      stateChange.errors[key] = 'This field is required.';
+    }
+    else {
+      stateChange.errors[key] = null; 
+    }
 
-    debugger;
-    this.props.actions.loginUser(this.refs.email.value, this.refs.password.value, this.state.redirectTo);
+    this.setState(stateChange);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    
+    for (let k in this.state.errors) {
+      if (this.state.errors[k] !== null) {
+        this.setState({ submitted: true });
+        this.refs[k + 'Input'].focus();
+        return;
+      }
+    }
+
+    var keys = Object.keys(this.state.credentials),
+        resetState = {};
+    for (var i = 0; i < keys.length; i++) {
+      resetState[keys[i]] = '';
+    }
+
+    this.props.actions.loginUser(this.state.credentials.email, this.state.credentials.password, this.state.redirectTo);
+
+    this.setState(resetState);
   }
 
   render() {
@@ -155,15 +204,17 @@ class LoginView extends React.Component {
               <div className="text-center m-t-0 m-b-20">Please sign in to your account below.</div>
               { this.props.isAuthenticating ?  <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i> :
               <form role="form" name="login_form" className="form-input-flat">
-                <div className="form-group">
-                  <input ref="email" type="text" className="form-control input-lg" placeholder="Email" />
+                <div className={'form-group ' + (this.state.submitted && (this.state.errors || {}).email ? 'has-error' : '')}>
+                  <input ref="emailInput" name="email" onChange={this.handleChange} type="text" className="form-control input-lg" placeholder="Email" />
+                  <small className="text-muted form-error">{(this.state.submitted && (this.state.errors || {}).email) || ''}</small>
                 </div>
-                <div className="form-group">
-                  <input ref="password" type="password" className="form-control input-lg" placeholder="Password" />
+                <div className={'form-group ' + (this.state.submitted && (this.state.errors || {}).password ? 'has-error' : '')}>
+                  <input ref="passwordInput" name="password" onChange={this.handleChange} type="password" className="form-control input-lg" placeholder="Password" />
+                  <small className="text-muted form-error">{(this.state.submitted && (this.state.errors || {}).password) || ''}</small>
                 </div>
                 <div className="row m-b-20">
                   <div className="col-md-12">
-                    <button type="submit" onClick={this.submitLogin} className="btn btn-lime btn-lg btn-block">Sign in to your account</button>
+                    <button type="submit" onClick={this.handleSubmit} className="btn btn-lime btn-lg btn-block">Sign in to your account</button>
                   </div>
                 </div>
                 <div className="text-center">
