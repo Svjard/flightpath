@@ -8,7 +8,7 @@ import LinkedStateMixin from 'react-addons-linked-state-mixin';
 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-class LoginView extends React.Component {
+export class LoginView extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -198,7 +198,7 @@ class LoginView extends React.Component {
           <div id="world"></div>
           <div className="login">
             <div className="login-brand bg-inverse text-white">
-              <img src={this.ext + '/images/logo_inverse.png'} height="36" className="pull-right" /> Flight Path Login
+              <img src='/images/logo_inverse.png' height="36" className="pull-right" /> Flight Path Login
             </div>
             <div className="login-content">
               <div className="text-center m-t-0 m-b-20">Please sign in to your account below.</div>

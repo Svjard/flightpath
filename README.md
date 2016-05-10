@@ -6,6 +6,8 @@ An open-source, free to play, MMO regional airline simulation, based on real-lif
 
 More details and website coming soon...
 
+## Screenshots
+
 <img src="http://i.imgur.com/BuF39i9.png">
 
 ## Technology
