@@ -2,8 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import AboutView from './AboutView';
-import { Link } from 'react-router';
+import AboutView from 'views/AboutView';
 
 describe('<AboutView />', () => {
   it('should have 4 paragraphs', () => {

@@ -46,8 +46,8 @@ const config = {
     'react',
     'react-redux',
     'react-router',
-    'react-router-redux',
-    'redux'
+    'redux',
+    'redux-router'
   ],
 
   // ----------------------------------
