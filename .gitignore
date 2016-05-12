@@ -43,6 +43,7 @@ typings
 dist
 dev
 docs
+reports
 lib
 test
 tmp

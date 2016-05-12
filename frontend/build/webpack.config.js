@@ -23,7 +23,7 @@ const webpackConfig = {
 // ------------------------------------
 // Entry Points
 // ------------------------------------
-const APP_ENTRY_PATH = paths.client('main.js');
+const APP_ENTRY_PATH = paths.client('index.js');
 
 webpackConfig.entry = {
   app: __DEV__

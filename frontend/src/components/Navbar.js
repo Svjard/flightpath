@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <div className="navbar-header">
             <a href="/" className="navbar-brand">
-              <img src="images/logo.png" className="logo" /> Flight Path
+              <img src="/images/logo.png" className="logo" /> Flight Path
             </a>
             <button type="button" className="navbar-toggle">
               <span className="icon-bar"></span>

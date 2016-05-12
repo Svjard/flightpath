@@ -42,12 +42,29 @@ const config = {
     colors : true
   },
   compiler_vendor : [
+    'blacklist',
+    'bluebird',
+    'classnames',
+    'cookies-js',
+    'd3',
     'history',
+    'keymirror',
+    'moment',
+    'lodash',
+    'object-assign',
     'react',
+    'react-addons-linked-state-mixin',
+    'react-addons-update',
+    'react-dom',
+    'react-mixin',
     'react-redux',
     'react-router',
     'redux',
-    'redux-router'
+    'redux-logger',
+    'redux-router',
+    'redux-thunk',
+    'superagent',
+    'superagent-promise'
   ],
 
   // ----------------------------------

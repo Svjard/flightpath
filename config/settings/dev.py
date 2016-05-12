@@ -48,7 +48,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'frontend/dist/'),
-  os.path.join(BASE_DIR, 'frontend/src/'),
+  os.path.join(BASE_DIR, 'frontend/src/static/'),
 )
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)

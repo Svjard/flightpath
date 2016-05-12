@@ -12,7 +12,7 @@
     "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "dev:no-debug": "npm run dev -- --no_debug",
-    "test": "better-npm-run test",
+    "test": "better-npm-run test ",
     "test:dev": "npm run test -- --watch",
     "test:e2e": "better-npm-run e2e",
     "deploy": "better-npm-run deploy",

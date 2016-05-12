@@ -64,7 +64,7 @@ class AccountViewSet(viewsets.ModelViewSet):
 
   def destroy(self, request, pk=None):
     account = self.get_object()
-    account.email = str(account.id)+'_nonactive'+'@snippod.com'
+    account.email = str(account.id)+'_nonactive'+'@flightpathsim.org'
     account.first_name = ''
     account.last_name = ''
     account.is_active = False

@@ -6,8 +6,6 @@ import reactMixin from 'react-mixin';
 import * as actionCreators from '../actions';
 import LinkedStateMixin from 'react-addons-linked-state-mixin';
 
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 export class LoginView extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -47,12 +45,6 @@ export class LoginView extends React.Component {
   }
 
   componentDidMount() {
-    let ext = document.location.port !== '3000' ? '/static' : '';
-    if (this.ext !== ext) {
-      this.ext = ext;
-      this.setState(this.state);
-    }
-
     var keys = Object.keys(this.state.credentials);
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i];
@@ -116,7 +108,7 @@ export class LoginView extends React.Component {
       let cloud = document.createElement('img');
       cloud.style.opacity = 0;
 
-      const src = this.ext + '/images/cloud.png';
+      const src = '/images/cloud.png';
       ((img) => {
         img.addEventListener('load', () => {
           img.style.opacity = .8;
@@ -218,7 +210,7 @@ export class LoginView extends React.Component {
                   </div>
                 </div>
                 <div className="text-center">
-                  New here? <a href="/register" className="text-muted">Create a new account</a>
+                  New here? <Link to="/register" className="text-muted">Create a new account</Link>
                 </div>
               </form>
               }
