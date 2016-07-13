@@ -1,4 +1,5 @@
-# <img src="http://i.imgur.com/MVmYI0l.png"> **Flight Path**  [![Build Status](https://travis-ci.org/Svjard/flightpath.svg?branch=master)](https://travis-ci.org/Svjard/flightpath)
+# <img src="http://i.imgur.com/MVmYI0l.png">
+**Flight Path**  [![Build Status](https://travis-ci.org/Svjard/flightpath.svg?branch=master)](https://travis-ci.org/Svjard/flightpath)
 
 ## Overview
 
@@ -18,8 +19,6 @@ Flight Path uses the following technologies.
 * [Redux](https://github.com/reactjs/redux)
 * [D3](https://d3js.org/)
 * [Bootstrap](http://getbootstrap.com/)
-* [Django](https://www.djangoproject.com/)
-* [Django REST Framework](http://www.django-rest-framework.org/)
 
 ## Getting Started
 
