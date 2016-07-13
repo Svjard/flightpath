@@ -1,5 +1,5 @@
-# <img src="http://i.imgur.com/MVmYI0l.png">
-**Flight Path**  [![Build Status](https://travis-ci.org/Svjard/flightpath.svg?branch=master)](https://travis-ci.org/Svjard/flightpath)
+<img src="http://i.imgur.com/MVmYI0l.png">
+# **Flight Path**  [![Build Status](https://travis-ci.org/Svjard/flightpath.svg?branch=master)](https://travis-ci.org/Svjard/flightpath)
 
 ## Overview
 
